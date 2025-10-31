@@ -16,7 +16,7 @@ namespace Karaokay
         public AddSongPage()
         {
             InitializeComponent();
-            _songService = new SongService();
+            _songService = SongService.Instance;
 
             // Enable window dragging
             this.MouseLeftButtonDown += (s, e) =>
@@ -106,7 +106,8 @@ namespace Karaokay
                     Duration = "0:00", // TODO: Calculate actual duration
                     ThumbnailUrl = string.Empty, // TODO: Generate or fetch thumbnail
                     IsFavorite = false,
-                    PlayCount = 0
+                    PlayCount = 0,
+                    IsUserAdded = true
                 };
 
                 // Add song to service

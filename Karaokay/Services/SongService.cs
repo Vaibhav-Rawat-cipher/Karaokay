@@ -7,12 +7,32 @@ namespace Karaokay.Services
 {
     public class SongService
     {
+        private static SongService? _instance;
+        private static readonly object _lock = new object();
         private List<Song> _songs;
 
-        public SongService()
+        private SongService()
         {
             _songs = new List<Song>();
             LoadSampleData();
+        }
+
+        public static SongService Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    lock (_lock)
+                    {
+                        if (_instance == null)
+                        {
+                            _instance = new SongService();
+                        }
+                    }
+                }
+                return _instance;
+            }
         }
 
         private void LoadSampleData()
@@ -96,6 +116,11 @@ namespace Karaokay.Services
         public List<Song> GetRecent()
         {
             return _songs.OrderByDescending(s => s.DateAdded).Take(10).ToList();
+        }
+
+        public List<Song> GetUserLibrary()
+        {
+            return _songs.Where(s => s.IsUserAdded).OrderByDescending(s => s.DateAdded).ToList();
         }
 
         public List<Song> SearchSongs(string query)

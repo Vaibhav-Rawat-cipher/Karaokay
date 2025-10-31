@@ -14,5 +14,6 @@ namespace Karaokay.Models
         public DateTime DateAdded { get; set; } = DateTime.Now;
         public bool IsFavorite { get; set; }
         public int PlayCount { get; set; }
+        public bool IsUserAdded { get; set; } = false;
     }
 }

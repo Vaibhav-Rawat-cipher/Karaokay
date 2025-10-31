@@ -19,7 +19,7 @@ namespace Karaokay
         public MainWindow()
         {
             InitializeComponent();
-            _songService = new SongService();
+            _songService = SongService.Instance;
             LoadSongs();
             
             // Enable window dragging
@@ -34,6 +34,7 @@ namespace Karaokay
         {
             List<Song> songs = filter switch
             {
+                "YourLibrary" => _songService.GetUserLibrary(),
                 "Favorites" => _songService.GetFavorites(),
                 "Recent" => _songService.GetRecent(),
                 _ => _songService.GetAllSongs()
@@ -80,7 +81,11 @@ namespace Karaokay
             var filteredSongs = _songService.SearchSongs(searchQuery);
 
             // Apply current filter
-            if (_currentFilter == "Favorites")
+            if (_currentFilter == "YourLibrary")
+            {
+                filteredSongs = filteredSongs.Where(s => s.IsUserAdded).ToList();
+            }
+            else if (_currentFilter == "Favorites")
             {
                 filteredSongs = filteredSongs.Where(s => s.IsFavorite).ToList();
             }
