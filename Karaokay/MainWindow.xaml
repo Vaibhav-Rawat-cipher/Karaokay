@@ -80,12 +80,12 @@
                           Margin="10,0,30,0"/>
 
                 <!-- Search Bar -->
-                <Grid Grid.Column="1" MaxWidth="500" HorizontalAlignment="Left">
+                <Grid Grid.Column="1" MaxWidth="500" HorizontalAlignment="Center">
                     <TextBox x:Name="SearchBox" 
                             Style="{StaticResource SearchTextBox}"
                             TextChanged="SearchBox_TextChanged"/>
                     <materialDesign:PackIcon Kind="Magnify" 
-                                           Width="24" 
+                                           Width="2400" 
                                            Height="24"
                                            Foreground="#666"
                                            HorizontalAlignment="Right"
