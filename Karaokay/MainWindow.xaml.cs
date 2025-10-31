@@ -140,14 +140,15 @@ namespace Karaokay
 
         private void MenuButton_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: Implement menu options (add song, settings, etc.)
-            MessageBox.Show("Menu options:\n" +
-                          "- Add new song\n" +
-                          "- Import songs\n" +
-                          "- Settings\n" +
-                          "- About\n\n" +
-                          "This will be implemented in future updates.",
-                          "Menu", MessageBoxButton.OK, MessageBoxImage.Information);
+            // Open Add Song page
+            var addSongPage = new AddSongPage();
+            addSongPage.Owner = this;
+            
+            if (addSongPage.ShowDialog() == true)
+            {
+                // Refresh the song list after adding a new song
+                LoadSongs(_currentFilter);
+            }
         }
 
         private void MinimizeButton_Click(object sender, RoutedEventArgs e)

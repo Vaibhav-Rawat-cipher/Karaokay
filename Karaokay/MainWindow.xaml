@@ -135,27 +135,31 @@
                         </Grid.RowDefinitions>
 
                         <!-- Filter Buttons -->
-                        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,15">
-                            <Button Content="All" 
+                        <Grid Grid.Row="0" Margin="0,0,0,15">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                <Button Content="All" 
+                                       Style="{StaticResource RoundedButton}"
+                                       Margin="0,0,10,0"
+                                       Click="FilterButton_Click"
+                                       Tag="All"/>
+                                <Button Content="Favorites" 
+                                       Style="{StaticResource RoundedButton}"
+                                       Margin="0,0,10,0"
+                                       Click="FilterButton_Click"
+                                       Tag="Favorites"/>
+                                <Button Content="Recent" 
+                                       Style="{StaticResource RoundedButton}"
+                                       Margin="0,0,10,0"
+                                       Click="FilterButton_Click"
+                                       Tag="Recent"/>
+                            </StackPanel>
+                            <Button Content="+ Add Song" 
                                    Style="{StaticResource RoundedButton}"
-                                   Margin="0,0,10,0"
-                                   Click="FilterButton_Click"
-                                   Tag="All"/>
-                            <Button Content="Favorites" 
-                                   Style="{StaticResource RoundedButton}"
-                                   Margin="0,0,10,0"
-                                   Click="FilterButton_Click"
-                                   Tag="Favorites"/>
-                            <Button Content="Recent" 
-                                   Style="{StaticResource RoundedButton}"
-                                   Margin="0,0,10,0"
-                                   Click="FilterButton_Click"
-                                   Tag="Recent"/>
-                            <Button Content="☰" 
-                                   Style="{StaticResource RoundedButton}"
-                                   Width="45"
+                                   HorizontalAlignment="Right"
+                                   Padding="15,8"
+                                   FontWeight="SemiBold"
                                    Click="MenuButton_Click"/>
-                        </StackPanel>
+                        </Grid>
 
                         <!-- Song List -->
                         <ScrollViewer Grid.Row="1" 
